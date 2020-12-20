@@ -15,5 +15,15 @@
   <%= @category.display_in_navbar %>
 </p>
 
+<p>
+  <% if @category.image.attached? %>
+    <p>
+      <strong>Image:</strong>
+      <br>
+      <%= image_tag @category.image %>
+    </p>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

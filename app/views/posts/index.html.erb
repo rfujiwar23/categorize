@@ -1,49 +1,43 @@
+
+
+
+<!-- <p>
+Total: <%= Post.all.count %>
+</p> -->
+
+
+<div class="banner">
+
+<%= image_tag 'bg02.jpg', :class => 'banner-img' %>
+
+</div>
+
+<p>Items: <%= @posts.select{|post| post.category.name}.count%></p>
+
+<div class="row">
+  <% @posts.each do |post| %>
+  <div class="post-me col-md-3 col-sm-6 col-12">
+
+
+  <% if post.image.attached? %>
+    <p>
+      <br>
+      <%= image_tag post.image, :class => 'img' %>
+    </p>
+  <% end %>
+
+
+    <p>Category: <%= post.category.name %></p>
+    <p>Title: <%= post.title %></p>
+    <p><%= link_to "Product Page", post.body %></p>
+    <p><%= link_to 'Show', post %> | <%= link_to 'Edit', edit_post_path(post) %> | <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  </div>
+  <% end %>
+</div>
+<br>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Posts | <%= link_to "New Category", new_category_path %></h1>
-
-<br>
-<br>
-<%= link_to "Edit Category", categories_path %>
-<ul>
-  <% Category.all.each do |category| %>
-  <li><%= link_to category.name, posts_path(category: category.name)  %></li>
-  <% end %>
-</ul>
-
-<br>
-<h2>Show in Navbar</h2>
-<ul>
-  <% Category.where(display_in_navbar: true).each do |category| %>
-  <li><%= link_to category.name, posts_path(category: category.name)  %></li>
-  <% end %>
-</ul>
-<br>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= post.category.name %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+<p class="to_right">Posts | <%= link_to "New Category", new_category_path %> | <%= link_to "Edit/Delete Category", categories_path %></p>
+<hr>
+<p class="to_right"><%= link_to 'New Post', new_post_path %></p>

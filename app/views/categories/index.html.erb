@@ -1,31 +1,36 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Categories</h1>
+<div class="banner">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Display in navbar</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= image_tag 'bg02.jpg', :class => 'banner-img' %>
 
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= category.description %></td>
-        <td><%= category.display_in_navbar %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+</div>
+
+
+
+
+
+
+<div class="row">
+
+  <% @categories.each do |category| %>
+
+  <div class="category col-md-4 col-sm-12">
+    <h6><%= category.name %></h6>
+    <p><%= category.description %></p>
+  <%= link_to 'posts?category=' + category.name do %>
+  <%= image_tag (category.image), width: "100%" if category.image.attached? %>
+  <% end %>
+
+
+
+    <p class="small">
+      <%= link_to 'Edit', edit_category_path(category) %> |
+      <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  </div>
+  <% end %>
+</div>
 
 <br>
-
+<p id="notice"><%= notice %></p>
 <%= link_to 'New Category', new_category_path %>

@@ -5,9 +5,15 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :description %>
+    <%= f.input :description, :maxlength => 28, placeholder: '28文字まで' %>
     <%= f.input :display_in_navbar %>
   </div>
+
+  <div class="field">
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+  </div>
+
 
   <div class="form-actions">
     <%= f.button :submit %>
