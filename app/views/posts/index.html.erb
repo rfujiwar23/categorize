@@ -12,7 +12,9 @@ Total: <%= Post.all.count %>
 
 </div>
 
-<p>Items: <%= @posts.select{|post| post.category.name}.count%></p>
+
+<p>Applicable Products: <%= @posts.select{|post| post.category.name}.count%></p>
+
 
 <div class="row">
   <% @posts.each do |post| %>
